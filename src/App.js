@@ -1,6 +1,15 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route }
+  from 'react-router-dom';
+import Login from './pages/Login';
+
 function App() {
   return (
-    <button className="btn btn-outline">Button</button>
+    <Router>
+      <Routes>
+        <Route path='/dog' element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
