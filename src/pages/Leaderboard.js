@@ -1,4 +1,4 @@
-import Board from '../compnents/Board'
+import Board from '../components/Board'
 const Leaderboard = () => {
     return (
         <div className='w-screen h-screen'>
