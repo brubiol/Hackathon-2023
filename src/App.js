@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route }
   from 'react-router-dom';
 import Login from './pages/Login';
+import Leaderboard from './pages/Leaderboard';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/dog' element={<Login />} />
+        <Route path='/Leaderboard' element={<Leaderboard/>} />
       </Routes>
     </Router>
   );
