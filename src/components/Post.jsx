@@ -3,6 +3,7 @@ import { databases } from "../appwrite/appwriteConfig";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { account } from "../appwrite/appwriteConfig";
+import Nav from "./Nav";
 
 const PostModal = () => {
     const navigate = useNavigate()
