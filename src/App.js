@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Leaderboard from './pages/Leaderboard';
 import Signup from './pages/Signup';
 import Post from './components/Post'
+import Feed from './pages/Feed'
+import Home from './pages/Home'
 
 
 function App() {
