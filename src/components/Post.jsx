@@ -54,16 +54,17 @@ const PostModal = () => {
 
 
         // Add your submit logic here to send the data to the server
-        const promise = databases.createDocument('63e7dab6593b65a6cef9', '63e7dac8e6e75f0280c6', uuid(),
+        const promise = databases.createDocument('63e7dab6593b65a6cef9', '63e89b5d116735a1a113', uuid(),
             {
-                
-                "Name": UserDetails.name,
-                "Workout": exercise,
-                "Caption": caption,
-                "Img": image,
-                "Minutes": time,
-                "Likes": likes
+                "id": uuid(),
+                "workout": exercise,
+                "time": time,
+                "caption": caption,
+                "name": UserDetails.name,
+                "image": image,
+                "likes": likes
             });
+
 
 
         promise.then(function (response) {
