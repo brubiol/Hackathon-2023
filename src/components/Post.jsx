@@ -159,10 +159,10 @@ const PostModal = () => {
                                     <option value="" disabled>
                                         Select an Exercise
                                     </option>
-                                    <option value="Running">Running</option>
-                                    <option value="Yoga">Yoga</option>
-                                    <option value="Weightlifting">Weightlifting</option>
                                     <option value="Swimming">Swimming</option>
+                                    <option value="Biking">Biking</option>
+                                    <option value="Weightlifting">Weightlifting</option>
+                                    <option value="Running">Running</option>
                                 </select>
                             </div>
                             <div className="mb-4">
