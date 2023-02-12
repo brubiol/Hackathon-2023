@@ -1,8 +1,8 @@
 // import React, { useState, useEffect } from "react";
 
-import { account } from "../appwrite/appwriteConfig";
-import { createAvatar } from '@dicebear/core';
-import { lorelei } from '@dicebear/collection';
+// import { account } from "../appwrite/appwriteConfig";
+// import { createAvatar } from '@dicebear/core';
+// import { lorelei } from '@dicebear/collection';
 // const dummyData = [
 //   {
 //     id: 1,
@@ -244,9 +244,177 @@ import { lorelei } from '@dicebear/collection';
 // };
 
 // export default Workout;
+
+// const avatar = (seedValue) => {
+//   return createAvatar(lorelei, {
+//       seed: seedValue
+//   }).toDataUriSync();
+// }
+// const Workout = (props) => {
+//   return (
+
+
+
+    
+
+    
+//     <div className="flex flex-col justify-center items-center mt-10">
+//       {props.loading ? (
+//         <p className="text-lg text-gray-600">Loading...</p>
+//       ) : (
+//         <ul className="w-full max-w-lg">
+//           {Object.values(props.posts.documents).map((post, index) => {
+//             return (
+//               <li
+//                 key={index}
+//                 className="bg-white shadow-md rounded p-8 my-6 border-2"
+//               >
+//                 <div className="text-lg font-bold">{post.name}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.caption}
+//                 </div>
+//                 <div className="text-base mt-4">{post.workout}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.time}
+//                 </div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.likes} Likes
+//                 </div>
+//                 <div>
+                  
+//                 </div>
+//               </li>
+//             );
+//           })}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Workout;
+
+
+
+
+// const Workout = (props) => {
+//   return (
+//     <div className="flex flex-col justify-center items-center mt-10">
+//       {props.loading ? (
+//         <p className="text-lg text-gray-600">Loading...</p>
+//       ) : (
+//         <ul className="w-full max-w-lg">
+//           {Object.values(props.posts.documents).map((post, index) => {
+//             const avatarImage = avatar(post.name);
+//             return (
+//               <li
+//                 key={index}
+//                 className="bg-white shadow-md rounded p-8 my-6 border-2"
+//               >
+//                 <div className="text-lg font-bold">{post.name}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.caption}
+//                 </div>
+//                 <div className="text-base mt-4">{post.workout}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.time}
+//                 </div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.likes} Likes
+//                 </div>
+//                 {avatarImage ? (
+//                   <div className="w-16 rounded-full">
+//                     <img src={avatarImage} />
+//                   </div>
+//                 ) : null}
+//               </li>
+//             );
+//           })}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Workout;
+
+
+// import { account } from "../appwrite/appwriteConfig";
+// import { createAvatar } from '@dicebear/core';
+// import { lorelei } from '@dicebear/collection';
+
+// const avatar = (seedValue) => {
+//   try {
+//     return createAvatar(lorelei, {
+//         seed: seedValue
+//     }).toDataUriSync();
+//   } catch (error) {
+//     console.error(error);
+//     return null;
+//   }
+// }
+
+// const Workout = (props) => {
+//   return (
+//     <div className="flex flex-col justify-center items-center mt-10">
+//       {props.loading ? (
+//         <p className="text-lg text-gray-600">Loading...</p>
+//       ) : (
+//         <ul className="w-full max-w-lg">
+//           {Object.values(props.posts.documents).map((post, index) => {
+//             const avatarImage = avatar(post.name);
+//             return (
+//               <li
+//                 key={index}
+//                 className="bg-white shadow-md rounded p-8 my-6 border-2"
+//               >
+//                 <div className="text-lg font-bold">{post.name}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.caption}
+//                 </div>
+//                 <div className="text-base mt-4">{post.workout}</div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.time}
+//                 </div>
+//                 <div className="text-sm text-gray-600 mt-2">
+//                   {post.likes} Likes
+//                 </div>
+//                 {avatarImage ? (
+//                   <div className="w-16 rounded-full">
+//                     <img src={avatarImage} />
+//                   </div>
+//                 ) : null}
+//               </li>
+//             );
+//           })}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Workout;
+
+
+
+
+import { account } from "../appwrite/appwriteConfig";
+import { createAvatar } from '@dicebear/core';
+import { lorelei } from '@dicebear/collection';
+
+const avatar = (seedValue) => {
+  try {
+    return createAvatar(lorelei, {
+        seed: seedValue
+    }).toDataUriSync();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 const Workout = (props) => {
   return (
-    
     <div className="flex flex-col justify-center items-center mt-10">
       {props.loading ? (
         <p className="text-lg text-gray-600">Loading...</p>
@@ -256,18 +424,27 @@ const Workout = (props) => {
             return (
               <li
                 key={index}
-                className="bg-white shadow-md rounded p-8 my-6 border-2"
+                className="bg-white shadow-md rounded p-8 my-6 border-2 flex flex-row"
               >
-                <div className="text-lg font-bold">{post.name}</div>
-                <div className="text-sm text-gray-600 mt-2">
-                  {post.caption}
-                </div>
-                <div className="text-base mt-4">{post.workout}</div>
-                <div className="text-sm text-gray-600 mt-2">
-                  {post.time}
-                </div>
-                <div className="text-sm text-gray-600 mt-2">
-                  {post.likes} Likes
+                
+                  <div className="w-16 rounded-full mr-6">
+                    <img src={avatar(post.name)} />
+                  </div>
+                
+                <div className="flex flex-col">
+                  <div className="text-lg font-bold">{post.name}</div>
+                  <div className="text-base mt-4">{post.workout}</div>
+                  <div className="flex mt-4">
+                    <div className="text-sm text-gray-600">
+                      {post.time}
+                    </div>
+                    <div className="ml-auto text-sm text-gray-600">
+                      {post.likes} Likes
+                    </div>
+                  </div>
+                  <div className="text-sm text-gray-600 mt-2">
+                    {post.caption}
+                  </div>
                 </div>
               </li>
             );

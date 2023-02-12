@@ -20,6 +20,7 @@ const Feed = () => {
         setUserDetails(response);
       },
       function (error) {
+        console.log(error)
         navigate("/login");
       }
     );
