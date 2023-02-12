@@ -2,55 +2,31 @@ import { useState } from "react";
 import Nav from "../components/Nav";
 import { useNavigate } from "react-router-dom";
 import { account } from "../appwrite/appwriteConfig";
-import { v4 as uuid } from 'uuid';
 
-const Signup = () => {
+const Login = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState({
-        name: "",
         email: "",
         password: ""
     })
     const [error, setError] = useState("")
 
-    const signup = async (e) => {
-        e.preventDefault()
-
-        if (!user.name) {
-            setError("Invalid Name")
-            return
-        }
-
-        if (!user.email) {
-            setError("Invalid Email")
-            return
-        }
-
-        if (!user.password) {
-            setError("Invalid Password 8 digits required.")
-            return
-        }
-
-        const promise = account.create(uuid(), user.email, user.password, user.name)
-
-        promise.then((res) => {
+    const login = async () => {
+        const promise = account.createEmailSession(user.email, user.password);
+        
+        promise.then(function (resp) {
             navigate('/feed')
-        },
-            (err) => {
-                console.log(err)
-                if (err.message.split(" ")[1].toLowerCase() === "password:") {
-                    setError("Invalid Password - 8 digits required")
-                }
-                if (err.message.split(" ")[1].toLowerCase() === "email:") {
-                    setError("Invalid Email")
-                }
-                if (err.message.split(" ")[1].toLowerCase() === "limit") {
-                    setError("Rate Limit - Please wait")
-                }
-                if (err.code === 409) {
-                    setError("Email already exists")
-                }
-            })
+        }, function (err) {
+            if (err.message.split(" ")[1].toLowerCase() === '"password"') {
+                setError("Invalid Password - 8 digits required")
+            }
+            if (err.message.split(" ")[1].toLowerCase() === '"email"') {
+                setError("Invalid Email")
+            }
+            if (err.message.split(" ")[1].toLowerCase() === "limit") {
+                setError("Rate Limit - Please wait")
+            }
+        });
     }
 
     return (
@@ -64,12 +40,6 @@ const Signup = () => {
                             <h2 className="card-title font-mono">FlexiFrenzy</h2>
                         </div>
                         <p className="font-mono text-red-600">{error}</p>
-                        <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs" onChange={(e) => {
-                            setUser({
-                                ...user,
-                                name: e.target.value
-                            })
-                        }} />
                         <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs" onChange={(e) => {
                             setUser({
                                 ...user,
@@ -82,7 +52,7 @@ const Signup = () => {
                                 password: e.target.value
                             })
                         }} />
-                        <button className="btn btn-accent" onClick={signup}>Sign Up</button>
+                        <button className="btn btn-accent" onClick={login}>Login</button>
                     </div>
                 </div>
             </div>
@@ -90,4 +60,4 @@ const Signup = () => {
     );
 }
 
-export default Signup;
+export default Login;
