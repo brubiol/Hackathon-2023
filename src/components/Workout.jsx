@@ -421,17 +421,16 @@ const Workout = (props) => {
       ) : (
         <ul className="w-full max-w-lg">
           {Object.values(props.posts.documents).map((post, index) => {
-            const avatarImage = avatar(post.name);
             return (
               <li
                 key={index}
                 className="bg-white shadow-md rounded p-8 my-6 border-2 flex flex-row"
               >
-                {avatarImage ? (
+                
                   <div className="w-16 rounded-full mr-6">
-                    <img src={avatarImage} />
+                    <img src={avatar(post.name)} />
                   </div>
-                ) : null}
+                
                 <div className="flex flex-col">
                   <div className="text-lg font-bold">{post.name}</div>
                   <div className="text-base mt-4">{post.workout}</div>
