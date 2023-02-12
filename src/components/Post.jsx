@@ -5,10 +5,9 @@ import { v4 as uuid } from 'uuid';
 import { useNavigate, Link } from "react-router-dom";
 import { account } from "../appwrite/appwriteConfig";
 
-
 const PostModal = () => {
     const navigate = useNavigate()
-    const [UserDetails, setUserDetails] = useState()
+    const [UserDetails, setUserDetails] = useState(null)
 
 
     useEffect(() => {
@@ -21,6 +20,7 @@ const PostModal = () => {
             },
             function (error) {
                 console.log(error)
+                navigate("/login")
             }
         )
     }, [])
@@ -74,9 +74,11 @@ const PostModal = () => {
         setImage(null);
     };
 
+        if(UserDetails == null){
+            return navigate("/")
+        }
 
-    return (
-        <>UserDetails ?
+        return (
             <div>
                 <Nav></Nav>
                 <div className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
@@ -137,12 +139,10 @@ const PostModal = () => {
                         </form>
                     </div>
                 </div>
-            </div>:<div></div></>
+            </div>
+        );
+    
 
-
-
-
-    );
 };
 
 
