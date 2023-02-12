@@ -14,10 +14,9 @@ const Nav = () => {
                 </div>
             </div>
             <div className="navbar-center">
-                <a className="btn btn-ghost normal-case text-xl">FlexiFrenzy</a>
+                <p className="normal-case text-xl p-0 font-mono">FlexiFrenzy</p>
             </div>
             <div className="navbar-end">
-
             </div>
         </div>
     );
