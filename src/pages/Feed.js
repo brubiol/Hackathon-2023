@@ -9,16 +9,13 @@ const Feed = () => {
          <div>
          <Nav></Nav>
         </div>
-        <div className="container mx-auto px-4 p-20 bg-white">
+        <div className="container mx-auto px-4">
             <Workout />
         </div>
-
         <div >
             <PostButton />
         </div>
-        
-      
-        
+         
     </div>
    
   );
