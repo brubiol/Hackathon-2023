@@ -60,7 +60,7 @@ const Signup = () => {
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body flex flex-col items-center gap-3">
                         <div className="flex flex-col jusitfy-center items-center">
-                            <img src="https://img.icons8.com/ios/50/null/muscle-flexing.png" />
+                            <img alt="icon" src="https://img.icons8.com/ios/50/null/muscle-flexing.png" />
                             <h2 className="card-title font-mono">FlexiFrenzy</h2>
                         </div>
                         <p className="font-mono text-red-600">{error}</p>
