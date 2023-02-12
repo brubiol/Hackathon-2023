@@ -11,8 +11,6 @@ const PostModal = (props) => {
   const [exercise, setExercise] = useState("")
   const [time, setTime] = useState(0)
   const [image, setImage] = useState(null)
-  const [likes, setlikes] = useState(0)
-
 
   const handleSubmit = (e) => {
     if (caption === "") {
@@ -30,7 +28,7 @@ const PostModal = (props) => {
 
     if (image) {
       const id = uuid()
-      storage.createFile('63e8e428bffe884d0ad6', id, image)
+      const t = storage.createFile('63e8e428bffe884d0ad6', id, image)
 
       databases.createDocument(
         "63e7dab6593b65a6cef9",
@@ -43,12 +41,13 @@ const PostModal = (props) => {
           caption: caption,
           name: props.UserDetails.name,
           image: storage.getFileView('63e8e428bffe884d0ad6', id),
-          likes: likes,
+          likes: 0,
         }
       )
 
+      t.then((resp) => { props.reqPosts() }, (err) => {console.log(err)})
     } else {
-      databases.createDocument(
+      const t = databases.createDocument(
         "63e7dab6593b65a6cef9",
         "63e89b5d116735a1a113",
         uuid(),
@@ -59,9 +58,11 @@ const PostModal = (props) => {
           caption: caption,
           name: props.UserDetails.name,
           image: null,
-          likes: likes,
+          likes: 0,
         }
       )
+
+      t.then((resp) => { props.reqPosts() }, (err) => {console.log(err)})
     }
 
     setCaption("")
@@ -73,7 +74,7 @@ const PostModal = (props) => {
 
   return (
     <div className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
-      <form>
+      <div>
         {errorMessage !== "" && (
           <div className="alert alert-error shadow-lg">
             <div>
@@ -132,19 +133,19 @@ const PostModal = (props) => {
             type="file"
             className="w-full border border-gray-400 rounded-lg p-2"
             accept="image/*"
-            onChange={(e) => {setImage(e.target.files[0]); console.log(e.target.files[0])}}
+            onChange={(e) => {setImage(e.target.files[0])}}
           />
         </div>
         <div className="flex items-center justify-end pt-2">
-          <button
+          <label
             onClick={handleSubmit}
-            type="submit"
-            className="bg-blue-300 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+            htmlFor="my-modal-5"
+            className="bg-blue-300 text-white px-4 py-2 rounded-lg hover:bg-blue-600 btn"
           >
             Flex 💪
-          </button>
+          </label>
         </div>
-      </form>
+      </div>
     </div>
   )
 }

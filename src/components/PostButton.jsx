@@ -11,7 +11,7 @@ const PostButton = (props) => {
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />
 
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box  ">
+        <div className="modal-box">
           <Post UserDetails={props.UserDetails} reqPosts={props.reqPosts}/>
         </div>
       </div>
