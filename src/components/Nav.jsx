@@ -33,8 +33,7 @@ const Nav = () => {
                         {userDetails != null ? <>
                             <li><a href="/leaderboard">Leaderboard</a></li>
                             <li><button onClick={logout}>Logout</button></li>
-                        </>
-                            : <><li><button>Sign Up</button></li>
+                        </>: <><li><button>Sign Up</button></li>
                                 <li><a href="/login">Login</a></li></>}
                     </ul>
                 </div>
