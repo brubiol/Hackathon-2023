@@ -15,11 +15,8 @@ const PostModal = () => {
         getData.then(
             function (response) {
                 setUserDetails(response)
-                console.log("YELLO")
-                console.log(response)
             },
             function (error) {
-                console.log(error)
                 navigate("/login")
             }
         )
@@ -55,6 +52,7 @@ const PostModal = () => {
             console.log(response); // Success
         }, function (error) {
             console.log(error); // Failure
+        
         });
 
 
@@ -72,6 +70,7 @@ const PostModal = () => {
         setExercise("");
         setTime(0);
         setImage(null);
+        navigate('/feed')
     };
 
         if(UserDetails == null){
