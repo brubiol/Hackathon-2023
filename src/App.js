@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Routes, Route }
   from 'react-router-dom';
 
 import Login from './pages/Login';
-
 import Leaderboard from './pages/Leaderboard';
 import Signup from './pages/Signup';
 import Post from './components/Post'
-
+import Feed from './pages/Feed';
 
 function App() {
   return (
@@ -18,9 +17,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/post' element={<Post />} />
-        
-
-      </Routes>
+        <Route path='/feed' element={<Feed />} />
+    
+      </Routes> 
     </Router>
   );
 }
