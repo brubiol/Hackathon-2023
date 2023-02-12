@@ -6,7 +6,7 @@ import Login from './pages/Login';
 
 import Leaderboard from './pages/Leaderboard';
 import Signup from './pages/Signup';
-
+import Feed from './pages/Feed';
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
         <Route path='/Leaderboard' element={<Leaderboard/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-
-      </Routes>
+        <Route path='/feed' element={<Feed />} />
+    
+      </Routes> */
     </Router>
   );
 }
