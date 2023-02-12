@@ -435,6 +435,7 @@ const Workout = (props) => {
                   <div className="text-lg font-bold">{post.name}</div>
                   <div className="text-base mt-4">{post.workout}</div>
                   <div className="flex mt-4">
+                    <img src={post.image}></img>
                     <div className="text-sm text-gray-600">
                       {post.time}
                     </div>

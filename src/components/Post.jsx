@@ -1,69 +1,79 @@
-import React, { useState } from "react";
-import { databases } from "../appwrite/appwriteConfig";
-import { v4 as uuid } from "uuid";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react"
+import { databases, storage } from "../appwrite/appwriteConfig"
+import { v4 as uuid } from "uuid"
+import { useNavigate } from "react-router-dom"
 
 const PostModal = (props) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const [caption, setCaption] = useState("");
-  const [exercise, setExercise] = useState("");
-  const [time, setTime] = useState(0);
-  const [image, setImage] = useState(null);
-  const [likes, setlikes] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("")
+  const [caption, setCaption] = useState("")
+  const [exercise, setExercise] = useState("")
+  const [time, setTime] = useState(0)
+  const [image, setImage] = useState(null)
+  const [likes, setlikes] = useState(0)
+
 
   const handleSubmit = (e) => {
     if (caption === "") {
-      setErrorMessage("Caption");
-      return;
+      setErrorMessage("Caption")
+      return
     } else if (time === 0) {
-      setErrorMessage("time");
-      return;
+      setErrorMessage("time")
+      return
     } else if (exercise === "") {
-      setErrorMessage("exercise");
-      return;
+      setErrorMessage("exercise")
+      return
     }
 
-    setErrorMessage("");
+    setErrorMessage("")
 
-    // Add your submit logic here to send the data to the server
-    const promise = databases.createDocument(
-      "63e7dab6593b65a6cef9",
-      "63e89b5d116735a1a113",
-      uuid(),
-      {
-        id: props.UserDetails.$id,
-        workout: exercise,
-        time: time,
-        caption: caption,
-        name: props.UserDetails.name,
-        image: image,
-        likes: likes,
-      }
-    );
+    if (image) {
+      const id = uuid()
+      storage.createFile('63e8e428bffe884d0ad6', id, image)
 
-    promise.then(
-      function (response) {
-        console.log(response); // Success
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
+      databases.createDocument(
+        "63e7dab6593b65a6cef9",
+        "63e89b5d116735a1a113",
+        uuid(),
+        {
+          id: props.UserDetails.$id,
+          workout: exercise,
+          time: time,
+          caption: caption,
+          name: props.UserDetails.name,
+          image: storage.getFileView('63e8e428bffe884d0ad6', id),
+          likes: likes,
+        }
+      )
 
-    // Reset the form after successful submission
+    } else {
+      databases.createDocument(
+        "63e7dab6593b65a6cef9",
+        "63e89b5d116735a1a113",
+        uuid(),
+        {
+          id: props.UserDetails.$id,
+          workout: exercise,
+          time: time,
+          caption: caption,
+          name: props.UserDetails.name,
+          image: null,
+          likes: likes,
+        }
+      )
+    }
 
-    setCaption("");
-    setExercise("");
-    setTime(0);
-    setImage(null);
-    navigate("/feed");
-  };
+    setCaption("")
+    setExercise("")
+    setTime(0)
+    setImage(null)
+    navigate("/feed")
+  }
 
   return (
     <div className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden transform transition-all sm:max-w-lg sm:w-full">
-      <form onSubmit={handleSubmit}>
+      <form>
         {errorMessage !== "" && (
           <div className="alert alert-error shadow-lg">
             <div>
@@ -121,11 +131,13 @@ const PostModal = (props) => {
           <input
             type="file"
             className="w-full border border-gray-400 rounded-lg p-2"
-            onChange={(e) => setImage(e.target.files[0])}
+            accept="image/*"
+            onChange={(e) => {setImage(e.target.files[0]); console.log(e.target.files[0])}}
           />
         </div>
         <div className="flex items-center justify-end pt-2">
           <button
+            onClick={handleSubmit}
             type="submit"
             className="bg-blue-300 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
           >
@@ -134,7 +146,7 @@ const PostModal = (props) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default PostModal;
+export default PostModal
