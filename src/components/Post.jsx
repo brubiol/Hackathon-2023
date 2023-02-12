@@ -15,18 +15,23 @@ const PostModal = (props) => {
 
 
   const handleSubmit = (e) => {
+
+
     if (caption === "") {
-      setErrorMessage("Caption")
-      return
+      e.preventDefault();
+      setErrorMessage("Caption");
+      return;
     } else if (time === 0) {
-      setErrorMessage("time")
-      return
+      e.preventDefault();
+      setErrorMessage("time");
+      return;
     } else if (exercise === "") {
-      setErrorMessage("exercise")
-      return
+      e.preventDefault();
+      setErrorMessage("exercise");
+      return;
     }
 
-    setErrorMessage("")
+    setErrorMessage("");
 
     if (image) {
       const id = uuid()
@@ -68,7 +73,8 @@ const PostModal = (props) => {
     setExercise("")
     setTime(0)
     setImage(null)
-    navigate("/feed")
+    props.closeModal();
+    
   }
 
   return (
