@@ -88,6 +88,9 @@ const PostModal = () => {
 
     };
 
+
+    
+
         if(UserDetails == null){
             return navigate("/")
         }
