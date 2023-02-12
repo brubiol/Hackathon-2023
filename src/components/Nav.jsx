@@ -7,8 +7,8 @@ const Nav = () => {
     const [userDetails, setUserDetails] = useState(null)
 
     useEffect(() => {
-      const getData = account.get()
-      getData.then((resp) => { setUserDetails(resp) }, (err) => { console.log(err) })
+        const getData = account.get()
+        getData.then((resp) => { setUserDetails(resp) }, (err) => { console.log(err) })
     }, [])
 
     const logout = async (e) => {
@@ -17,7 +17,7 @@ const Nav = () => {
         try {
             await account.deleteSession('current')
             navigate("/")
-        } catch(err) {
+        } catch (err) {
             console.log(err)
         }
     }
@@ -30,8 +30,12 @@ const Nav = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><a href="/">Home</a></li>
-                        { userDetails != null ? <li><button onClick={logout}>Logout</button></li> : <><li><button>Sign Up</button></li>
-                        <li><a href="/login">Login</a></li></>}
+                        {userDetails != null ? <>
+                            <li><a href="/leaderboard">Leaderboard</a></li>
+                            <li><button onClick={logout}>Logout</button></li>
+                        </>
+                            : <><li><button>Sign Up</button></li>
+                                <li><a href="/login">Login</a></li></>}
                     </ul>
                 </div>
             </div>
