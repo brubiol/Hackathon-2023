@@ -1,4 +1,4 @@
-Welcome to FlexiFrenzy 
+## Welcome to FlexiFrenzy 
 ## Inspiration
 Inspiration was born within us from the vast amount of motivation given to us from people pushing to better ourselves.
 ## What it does
