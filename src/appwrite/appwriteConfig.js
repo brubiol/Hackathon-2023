@@ -1,11 +1,13 @@
 import {Client, Account, Databases, Storage} from 'appwrite'
 
-const client = new Client()
+const client = new Client();
 
-client.setEndpoint('http://108.61.222.234/v1').setProject('63e7c410985e75665e26')
+client
+.setEndpoint('http://159.89.232.66/v1')
+.setProject('63fad9cbbde619723fd1');
 
 export const account = new Account(client)
 
-export const databases = new Databases(client, '63e7dab6593b65a6cef9')
+export const databases = new Databases(client, '63fadafebf2963bb6642')
 
 export const storage = new Storage(client);

@@ -28,8 +28,8 @@ const Feed = () => {
 
   function reqPosts() {
     const promise = databases.listDocuments(
-      "63e7dab6593b65a6cef9",
-      "63e89b5d116735a1a113",
+      "63fadafebf2963bb6642",
+      "63fadb0d6e0e508adfd4",
       [Query.orderDesc("")]
     );
 

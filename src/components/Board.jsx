@@ -37,25 +37,24 @@ const Board = () => {
             }
         )
         // Add your submit logic here to send the data to the server
-        let promise = databases.listDocuments('63e7dab6593b65a6cef9', '63e89b5d116735a1a113', [
-                                                       
-            Query.orderDesc("time"),
-            Query.limit(3),
+        let promise = databases.listDocuments("63fadafebf2963bb6642", "63fadb0d6e0e508adfd4", [                        
+             //Query.orderDesc('')
         ]);
         
+
+   
+    promise.then(function (response) {
+        console.log(response); // Success
     
-        promise.then(function (response) {
-            console.log(response); // Success
-            setUserRank(response.documents);
-        }, function (error) {
-            console.log(error); // Failure
+        // Sort the userRank array in descending order based on the time attribute
+        const sortedUsers = response.documents.sort((a, b) => b.time - a.time);
+        setUserRank(sortedUsers);
+
+      }, function (error) {
+        console.log(error); // Failure
     
-        });
+      });
     }, [])
-
-
-
-  
 
     return (
         <div>
@@ -108,6 +107,9 @@ const Board = () => {
             ))}
         </div>
     );
+
+   
+      
 }
 
 export default Board;

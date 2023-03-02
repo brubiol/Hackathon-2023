@@ -11,6 +11,8 @@ const Signup = () => {
         email: "",
         password: ""
     })
+
+    
     const [error, setError] = useState("")
 
     const signup = async (e) => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { databases, storage } from "../appwrite/appwriteConfig"
+import { databases, storage , account} from "../appwrite/appwriteConfig"
 import { v4 as uuid } from "uuid"
 import { useNavigate } from "react-router-dom"
 
@@ -33,11 +33,11 @@ const PostModal = (props) => {
 
     if (image) {
       const id = uuid()
-      const t = storage.createFile('63e8e428bffe884d0ad6', id, image)
+      const t = storage.createFile('63fc09fe286aaf66efaa', id, image)
 
       databases.createDocument(
-        "63e7dab6593b65a6cef9",
-        "63e89b5d116735a1a113",
+        "63fadafebf2963bb6642",
+        "63fadb0d6e0e508adfd4",
         uuid(),
         {
           id: props.UserDetails.$id,
@@ -45,16 +45,16 @@ const PostModal = (props) => {
           time: time,
           caption: caption,
           name: props.UserDetails.name,
-          image: storage.getFileView('63e8e428bffe884d0ad6', id),
-          likes: 0,
+          image: storage.getFileView('63fc09fe286aaf66efaa', id),
+          //likes: 0,
         }
       )
 
       t.then((resp) => { props.reqPosts() }, (err) => {console.log(err)})
     } else {
       const t = databases.createDocument(
-        "63e7dab6593b65a6cef9",
-        "63e89b5d116735a1a113",
+        "63fadafebf2963bb6642",
+        "63fadb0d6e0e508adfd4",
         uuid(),
         {
           id: props.UserDetails.$id,
@@ -63,7 +63,7 @@ const PostModal = (props) => {
           caption: caption,
           name: props.UserDetails.name,
           image: null,
-          likes: 0,
+          //likes: 0,
         }
       )
 
