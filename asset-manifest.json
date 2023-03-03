@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Hackathon-2023/static/css/main.d71e3373.css",
+    "main.js": "/Hackathon-2023/static/js/main.2db90344.js",
+    "index.html": "/Hackathon-2023/index.html",
+    "main.d71e3373.css.map": "/Hackathon-2023/static/css/main.d71e3373.css.map",
+    "main.2db90344.js.map": "/Hackathon-2023/static/js/main.2db90344.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d71e3373.css",
+    "static/js/main.2db90344.js"
+  ]
+}
